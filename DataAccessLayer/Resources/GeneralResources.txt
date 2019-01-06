@@ -1,0 +1,15 @@
+﻿select SPECIFIC_NAME + ', '
+  from LectureAndConference.information_schema.routines 
+ where routine_type = 'PROCEDURE'
+		AND SPECIFIC_NAME not IN 
+		(
+			'sp_upgraddiagrams',
+			'sp_helpdiagrams',
+			'sp_helpdiagramdefinition',
+			'sp_creatediagram',
+			'sp_renamediagram',
+			'sp_alterdiagram',
+			'sp_dropdiagram'
+		)
+		AND SPECIFIC_NAME like '%LC_%'
+ORDER BY SPECIFIC_NAME
